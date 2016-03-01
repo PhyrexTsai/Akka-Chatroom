@@ -14,7 +14,7 @@ import akka.stream.scaladsl.Flow
 object ChatService {
   def route(chatroom: ChatHandler) : Route = path("chat") {
     parameter('name) { name =>
-      handleWebSocketMessages(websocketChatFlow(chatroom, sender = name))
+      handleWebSocketMessages(websocketChatFlow(chatroom, name))
     }
   }
 
