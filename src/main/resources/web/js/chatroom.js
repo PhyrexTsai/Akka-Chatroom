@@ -39,12 +39,12 @@ $(document).ready(function(){
         var data = JSON.parse(event.data);
         var chat = $(".chat-space");
         var group = $("<div></div>").addClass("group-rom");
-        if(data.type === "ChatMessage"){
+        if(data.type === "ChatMessage" && data.message !== ""){
             var sender = $("<div></div>").addClass("first-part odd").html(data.sender);
             var message = $("<div></div>").addClass("second-part").html(data.message);
             var time = $("<div></div>").addClass("third-part").html("");
             group.append(sender).append(message).append(time);
-        }else{
+        }else if(data.message !== ""){
             var info = $("<div></div>").addClass("info-part odd").html(data.message);
             group.append(info);
         }
@@ -67,6 +67,12 @@ $(document).ready(function(){
             console.log(value);
         });
     }
+
+    var pokeServer = function() {
+        websocket.send("");
+    }
+
+    setInterval(pokeServer, 30000);
 
     $("#send").keypress(handleReturnKey);
     $("#sendButton").click(function(){
