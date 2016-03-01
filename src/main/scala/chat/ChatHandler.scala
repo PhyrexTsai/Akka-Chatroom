@@ -1,4 +1,4 @@
-package webservice
+package chat
 
 import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.stream.OverflowStrategy

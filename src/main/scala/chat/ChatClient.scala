@@ -1,8 +1,8 @@
-package webservice
+package chat
 
-import akka.actor.{Terminated, Status, ActorRef, Actor}
+import akka.actor.{Actor, ActorRef, Status, Terminated}
+import chat.ChatHandler._
 import events.Events
-import webservice.ChatHandler._
 
 /**
   * Created by Phyrex on 2016/2/28.

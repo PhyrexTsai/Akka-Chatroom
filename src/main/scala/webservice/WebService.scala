@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit._
 import akka.actor.ActorSystem
 import akka.http.scaladsl.server.Directives
 import akka.stream.Materializer
+import chat.ChatHandler
 import events.Events
 import route._
 
