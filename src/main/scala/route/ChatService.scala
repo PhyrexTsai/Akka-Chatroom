@@ -27,7 +27,7 @@ object ChatService {
       .map {
         case msg : Events.Message => {
           TextMessage.Strict(Events parse msg)
-        } // FIXME change this format
+        }
       }
 
 }
