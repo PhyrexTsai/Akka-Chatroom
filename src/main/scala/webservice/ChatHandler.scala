@@ -10,6 +10,9 @@ import events.Events
   */
 trait ChatHandler {
   def chatFlow(sender : String) : Flow[String, Events.Message, Any]
+
+  // 可以建置 robot 用來 boardcast 一些資訊
+  def boardcastMessage(message : Events.ChatMessage) : Unit
 }
 
 object ChatHandler {
@@ -30,6 +33,10 @@ object ChatHandler {
           .mapMaterializedValue(chatActor ! Join(sender, _))
 
         Flow.fromSinkAndSource(in, out)
+      }
+
+      def boardcastMessage(message : Events.ChatMessage) : Unit = {
+        chatActor ! message
       }
     }
   }
