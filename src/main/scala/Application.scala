@@ -10,12 +10,12 @@ import scala.util.{Failure, Success}
   */
 object Application extends App {
 
-  implicit val system = ActorSystem("Akka-PubSub-Chatroom")
+  implicit val system = ActorSystem("Akka-Chatroom")
   import system.dispatcher
   implicit val materializer = ActorMaterializer()
 
   val config = system.settings.config
-  val interface = config.getString("app.interface")
+  val interface = config.getString("app.host")
   val port = config.getInt("app.port")
 
   val service = new WebService
