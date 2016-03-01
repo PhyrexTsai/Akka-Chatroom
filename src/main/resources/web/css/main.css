@@ -27,12 +27,11 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: #f2f2f2;
 }
 body {
-  color: #fff;
+  color: #797979;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -41,8 +40,6 @@ body {
   width: 100%;
   height: 100%; /* For at least Firefox */
   min-height: 100%;
-  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -117,9 +114,6 @@ body {
   font-weight: bold;
 }
 
-.form-contorl {
-  height : 44px;
-}
 
 /*
  * Footer
@@ -128,6 +122,22 @@ body {
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+}
+
+/*
+ * Button
+ */
+.btn-theme
+{
+	background-color: #68dff0;
+	border-color: #48bcb4;
+	color: #fff;
+}
+.btn-theme.active,.btn-theme:active,.btn-theme:focus,.btn-theme:hover,.open .dropdown-toggle.btn-theme
+{
+	background-color: #48bcb4;
+	border-color: #48bcb4;
+	color: #fff;
 }
 
 /*

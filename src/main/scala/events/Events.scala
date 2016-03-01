@@ -23,13 +23,13 @@ object Events {
       message = msgs.apply(1).split(",").apply(1)
     }
     if(msgs.length > 2){
-      members = ", member : [\"" + msgs.apply(2).replace(")", "").replace(", ", "\",\"") + "\"]"
+      members = ", \"member\" : [\"" + msgs.apply(2).replace(")", "").replace(", ", "\",\"") + "\"]"
     }
     event match {
       case "Joined" => message = s"$sender 加入了"
       case "Leaved" => message = s"$sender 離開了"
-      case "ChatMessage" => message = sender + " : " + message.substring(0, message.length - 1)//.replace("\n", "<br/>")
+      case "ChatMessage" => message = message.substring(0, message.length - 1)//.replace("\n", "<br/>")
     }
-    "{sender : \"" + sender + "\", message : \"" + message + "\", type : \"" + event + "\"" + members + "}"
+    "{\"sender\" : \"" + sender + "\", \"message\" : \"" + message + "\", \"type\" : \"" + event + "\"" + members + "}"
   }
 }
