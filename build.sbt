@@ -6,6 +6,8 @@ scalaVersion := "2.11.7"
 
 lazy val akkaVersion = "2.4.2"
 
+enablePlugins(JavaAppPackaging)
+
 libraryDependencies ++=
   Seq(
       "com.typesafe.akka" %% "akka-http-experimental" % akkaVersion,

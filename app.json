@@ -1,0 +1,5 @@
+{
+  "name": "Akka-Chatroom",
+  "description": "Akka Chatroom deployed to Heroku.",
+  "image": "heroku/scala"
+}
