@@ -39,17 +39,19 @@ $(document).ready(function(){
         var data = JSON.parse(event.data);
         var chat = $(".chat-space");
         var group = $("<div></div>").addClass("group-rom");
-        if(data.type === "ChatMessage" && data.message !== ""){
-            var sender = $("<div></div>").addClass("first-part odd").html(data.sender);
-            var message = $("<div></div>").addClass("second-part").html(data.message);
-            var time = $("<div></div>").addClass("third-part").html("");
-            group.append(sender).append(message).append(time);
-        }else if(data.message !== ""){
-            var info = $("<div></div>").addClass("info-part odd").html(data.message);
-            group.append(info);
+        if(data.message != ""){
+            if(data.type === "ChatMessage"){
+                var sender = $("<div></div>").addClass("first-part odd").html(data.sender);
+                var message = $("<div></div>").addClass("second-part").html(data.message);
+                var time = $("<div></div>").addClass("third-part").html("");
+                group.append(sender).append(message).append(time);
+            }else{
+                var info = $("<div></div>").addClass("info-part odd").html(data.message);
+                group.append(info);
+            }
+            $(".chat-space").append(group);
+            $(".chat-space").animate({ scrollTop: $(".chat-space").height() }, "slow");
         }
-        $(".chat-space").append(group);
-        $(".chat-space").animate({ scrollTop: $(".chat-space").height() }, "slow");
         if(data.member != undefined){
             memberList(data.member);
         }
@@ -62,9 +64,16 @@ $(document).ready(function(){
         }
     }
 
-    var memberList = function(member) {
-        $.each(member, function(index, value){
-            console.log(value);
+    var memberList = function(members) {
+        $(".chat-member").empty();
+        $.each(members, function(index, value){
+            var group = $("<div></div>").addClass("group-rom");
+            var member = $("<div></div>").addClass("member-part");
+            var icon = $("<span></span>").addClass("glyphicon glyphicon-user");
+            member.append(icon);
+            member.append(" " + value);
+            group.append(member);
+            $(".chat-member").append(group);
         });
     }
 
@@ -77,6 +86,13 @@ $(document).ready(function(){
     $("#send").keypress(handleReturnKey);
     $("#sendButton").click(function(){
         sendMessage();
+    });
+    $("#chat-leave").click(function(){
+        websocket.close();
+        window.location = "index.html";
+    });
+    $(window).unload(function() {
+        websocket.close();
     });
 
     websocket.onmessage = receiveEvent;
