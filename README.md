@@ -7,7 +7,7 @@
 <h2>Introduction</h2>
 This project use Scala and Akka build a Chatroom.<br>
 
-<h2>Run local
+<h2>Run local</h2>
 <div class="CodeRay">
   <div class="code"><pre><span class="prompt">$</span><span class="function"> sbt run</span></pre></div>
 </div>
