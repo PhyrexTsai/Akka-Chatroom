@@ -50,7 +50,8 @@ $(document).ready(function(){
                 group.append(info);
             }
             $(".chat-space").append(group);
-            $(".chat-space").animate({ scrollTop: $(".chat-space").height() }, "slow");
+            var height = $(".first-part").size() * 48;
+            $(".chat-space").animate({ scrollTop: height }, "slow");
         }
         if(data.member != undefined){
             memberList(data.member);
